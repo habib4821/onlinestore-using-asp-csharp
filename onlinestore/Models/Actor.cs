@@ -6,9 +6,12 @@ namespace onlinestore.Models
     {
 
         [Key]
-        public int Id { get; set; }
+        public int ActorId { get; set; }
         public string ProfilePictureURL { get; set; }
         public string Bio { get; set; }
         public string FullName { get; set; }
+
+        //relation
+        public List<Actor_Movie> Actor_Movies { get; set; }
     }
 }

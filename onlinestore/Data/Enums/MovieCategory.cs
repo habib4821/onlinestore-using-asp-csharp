@@ -1,4 +1,4 @@
-﻿namespace onlinestore.Data
+﻿namespace onlinestore.Data.Enums
 {
     public enum MovieCategory
     {

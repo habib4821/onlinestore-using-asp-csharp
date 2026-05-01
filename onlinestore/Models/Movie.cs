@@ -1,5 +1,6 @@
-﻿using onlinestore.Data;
+﻿using onlinestore.Data.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace onlinestore.Models
 {
@@ -13,8 +14,21 @@ namespace onlinestore.Models
         public string ImageURL { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-
         public MovieCategory MovieCategory { get; set; }
 
+        //relationships
+        public List<Actor_Movie> Actor_Movies { get; set; }
+
+        //cinema
+        public int CinemaId { get; set; }
+
+        [ForeignKey("CinemaId")]
+        public Cinema Cinema { get; set; }
+
+        //producer
+        public int ProdId { get; set; }
+
+        [ForeignKey("ProdId")]
+        public Producer Producer { get; set; }
     }
 }
