@@ -36,4 +36,6 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 
+AppDbInitializer.Seed(app);
+
 app.Run();
