@@ -4,20 +4,19 @@ using onlinestore.Data;
 
 namespace onlinestore.Controllers
 {
-    public class MovieController : Controller
+
+    public class ProducersController : Controller
     {
         private readonly AppDbContext _context;
 
-
-        public MovieController(AppDbContext context)
+        public ProducersController(AppDbContext context)
         {
             _context = context;
         }
         public async Task<IActionResult> Index()
         {
-
-            var allMovies = await _context.Movies.ToListAsync();
-            return View();
+            var allProducers = await _context.Producers.ToListAsync();
+            return View(allProducers);
         }
     }
 }
