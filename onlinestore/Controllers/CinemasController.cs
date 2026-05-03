@@ -16,7 +16,7 @@ namespace onlinestore.Controllers
         public async Task<IActionResult> Index()
         {
             var cinemas = await _context.Cinemas.ToListAsync();
-            return Json(cinemas);
+            return View(cinemas);
         }
     }
 }
