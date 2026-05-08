@@ -16,8 +16,11 @@ namespace onlinestore.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var allMovies = await _context.Movies.ToListAsync();
-            return View();
+            var allMovies = await _context.Movies
+                .Include(m => m.Cinema)
+                .ToListAsync();
+
+            return View(allMovies);
         }
     }
 }
