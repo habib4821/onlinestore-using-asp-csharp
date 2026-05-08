@@ -17,7 +17,7 @@ namespace onlinestore.Controllers
         {
 
             var allMovies = await _context.Movies
-                .Include(m => m.Cinema)
+                .Include(m => m.Cinema).OrderBy(m => m.Name)
                 .ToListAsync();
 
             return View(allMovies);
