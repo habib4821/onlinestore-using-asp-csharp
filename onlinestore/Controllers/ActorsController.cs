@@ -1,22 +1,27 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using onlinestore.Data;
+using onlinestore.Data.Services;
 
 namespace onlinestore.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly AppDbContext _context;
 
+        private readonly IActorsService _service;
 
-        public ActorsController(AppDbContext context)
+        public ActorsController(IActorsService service)
         {
-            _context = context;
+            _service = service;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Actors.ToList();
-            Console.WriteLine(data);
+            var data = await _service.GetAll();
             return View(data);
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            return View();
         }
     }
 }
