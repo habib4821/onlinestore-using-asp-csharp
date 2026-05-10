@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using onlinestore.Data;
 using onlinestore.Data.Services;
+using onlinestore.Models;
+using System.Net.NetworkInformation;
 
 namespace onlinestore.Controllers
 {
@@ -22,6 +24,18 @@ namespace onlinestore.Controllers
         public async Task<IActionResult> Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            _service.Add(actor);
+            return RedirectToAction(nameof(Index));
+            
         }
     }
 }
