@@ -22,5 +22,10 @@ namespace onlinestore.Controllers
 
             return View(allMovies);
         }
+
+        public IActionResult Filter(string searchString)
+        {
+            return  RedirectToAction("Index");
+        }
     }
 }
